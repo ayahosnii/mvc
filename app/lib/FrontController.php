@@ -3,6 +3,9 @@ namespace mvc\app\lib;
 
 class FrontController
 {
+    const NOT_FOUND_ACTION = 'NotFoundAction';
+    const NOT_FOUND_CONTROLLER = 'mvc\app\controllers\NotFoundController';
+
     private $_controller = 'index';
     private $_action = 'default';
     private $_params = array();
@@ -35,11 +38,11 @@ class FrontController
         $controllerClassName = 'mvc\app\controllers\\'.ucfirst($this->_controller) . 'Controller';
         $actionName = $this->_action . 'Action';
         if(!class_exists($controllerClassName)){
-            $controllerClassName = 'mvc\app\controllers\NotFoundController';
+            $controllerClassName = self::NOT_FOUND_CONTROLLER;
         }
         $controller = new $controllerClassName();
         if (!method_exists($controller, $actionName)){
-            $actionName = 'NotFoundAction';
+            $this->_action = $actionName = self::NOT_FOUND_ACTION;
         }
 
         $controller->setController($this->_controller);
