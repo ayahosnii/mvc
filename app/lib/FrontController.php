@@ -19,7 +19,7 @@ class FrontController
     {
         $url = explode('/', trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/'));
 
-        if (isset($url[1]) && $url[0] != ''){
+        if (isset($url[0]) && $url[0] != ''){
             $this->_controller = $url[0];
         }
 

@@ -6,6 +6,9 @@
         margin: 0px;
         overflow: hidden;
     }
+    text{
+        color: white;
+    }
 
     div{
         position: absolute;
